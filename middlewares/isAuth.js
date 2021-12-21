@@ -15,8 +15,5 @@ module.exports = (req, res, next) => {
   if(!token || !decodedToken.id) {
     return res.status(401).send({message: "token invalido"})
   }
-
-  const userId = decodedToken.id
-  req.userId = userId
   next()
 }

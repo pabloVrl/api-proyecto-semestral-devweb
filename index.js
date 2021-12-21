@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 const especialistaRoute = require('./routes/especialistaRoute')
 const disponibilidadRoute = require('./routes/disponibilidadRoute')
@@ -9,6 +10,7 @@ const usuarioRoute = require('./routes/usuarioRoute')
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 app.use('/api/especialista', especialistaRoute)
 app.use('/api/disponibilidad', disponibilidadRoute)
