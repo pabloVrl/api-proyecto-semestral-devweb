@@ -16,7 +16,17 @@ const crear = (req, res) => {
 }
 
 const listar = (req, res) => {
-  Disponibilidad.find().populate('especialista').exec((err, disponibilidad) => {
+
+  let filter = {}
+
+  if(req.params.especialista) {
+    filter = {
+      especialista: req.params.especialista
+    }
+  }
+
+
+  Disponibilidad.find(filter,(err, disponibilidad) => {
     if (err) return res.status(400).send({ message: "Error al intentar listar disponibilidades" })
     res.send(disponibilidad)
   })

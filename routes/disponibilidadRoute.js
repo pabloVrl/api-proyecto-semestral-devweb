@@ -3,7 +3,7 @@ const api = express.Router()
 
 const disponibilidadController = require('../controllers/disponibilidadController')
 
-api.get('/', disponibilidadController.listar)
+api.get('/:especialista?', disponibilidadController.listar)
 api.post('/', disponibilidadController.crear)
 
 module.exports = api
