@@ -17,16 +17,11 @@ const crear = (req, res) => {
 
 const listar = (req, res) => {
 
-  let filter = {}
+  filtro = {}
 
-  if(req.params.especialista) {
-    filter = {
-      especialista: req.params.especialista
-    }
-  }
+  if(req.query.especialista) filtro = {especialista: req.query.especialista}
 
-
-  Disponibilidad.find(filter,(err, disponibilidad) => {
+  Disponibilidad.find(filtro, (err, disponibilidad) => {
     if (err) return res.status(400).send({ message: "Error al intentar listar disponibilidades" })
     res.send(disponibilidad)
   })
