@@ -9,6 +9,9 @@ const crear = (req, res) => {
     horario
   })
 
+  const moment = require('moment')
+  const formatted_date = moment
+
   nuevaDisponibilidad.save((err, disponibilidad) => {
     if (err) return res.status(400).send({ message: "Error al intentar guardar" })
     res.status(201).send(disponibilidad)
@@ -21,7 +24,7 @@ const listar = (req, res) => {
 
   if(req.query.especialista) filtro = {especialista: req.query.especialista}
 
-  Disponibilidad.find(filtro, (err, disponibilidad) => {
+  Disponibilidad.find(filtro).sort({horario: 1}).exec((err, disponibilidad) => {
     if (err) return res.status(400).send({ message: "Error al intentar listar disponibilidades" })
     res.send(disponibilidad)
   })
