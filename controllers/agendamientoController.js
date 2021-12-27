@@ -2,9 +2,6 @@ const Agendamiento = require('../models/Agendamiento')
 const Disponibilidad = require('../models/Disponibilidad')
 const crear = (req, res) => {
   const { especialista, disponibilidad, rutCliente  } = req.body
-
-  console.log(especialista, disponibilidad, rutCliente)
-
   const nuevoAgendamiento = new Agendamiento({
     especialista,
     disponibilidad,
