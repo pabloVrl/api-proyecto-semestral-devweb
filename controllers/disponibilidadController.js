@@ -9,9 +9,6 @@ const crear = (req, res) => {
     horario
   })
 
-  const moment = require('moment')
-  const formatted_date = moment
-
   nuevaDisponibilidad.save((err, disponibilidad) => {
     if (err) return res.status(400).send({ message: "Error al intentar guardar" })
     res.status(201).send(disponibilidad)
