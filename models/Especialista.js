@@ -6,10 +6,11 @@ const especialistaSchema = new Schema({
     type: String,
     required: true
   },
-  especialidad: {
-    type: String,
+  especialidades: [{
+    type: Schema.Types.ObjectId,
+    ref: "Especialidad",
     required: true
-  },
+  }],
 })
 
 module.exports = model('Especialista', especialistaSchema)
